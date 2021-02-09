@@ -1,0 +1,799 @@
+---
+# Verotthi
+---
+@charset 'UTF-8'
+
+// Import partials from sass_dir
+@import "slick-carousel"
+@import "base"
+
+body
+  overflow-x: hidden
+  background-color: $bg
+  color: $black
+
+#verotthi
+  position: relative
+
+  & > h1:first-child
+    display: none
+
+  #header
+    width: 100vw
+    @extend %border-box
+    position: absolute
+
+    a
+      background:
+        color: $red
+        image: url(../img/money.svg)
+        repeat: no-repeat
+        position: 92% center
+        size: auto 60%
+      padding: 0 40px 0 20px
+      height: 34px
+      line-height: 34px
+      border-radius: 10px
+      color: $bg
+      display: inline-block
+      float: right
+      margin: 30px $margin 0 0
+      box-shadow: 0 2px 0 darken($red, 20%)
+      @extend %transition
+
+      &:hover
+        background-color: lighten($red, 10%)
+
+    button
+      display: none
+      outline: none
+      position: absolute
+      bottom: 5px
+      right: 25px
+      width: 30px
+      height: 30px
+      @extend %transition
+      path
+        fill: #465374
+
+      span
+        display: block
+        width: 100%
+        height: 3px
+        background-color: $black
+        margin-top: 6px
+
+        &:first-child
+          margin-top: 0
+          transform: scaleX(1)
+          transition: transform .2s $ease
+          transition-delay: .4s
+
+        &:nth-child(3)
+          width: 65%
+          transition: width .2s $ease
+          transition-delay: .4s
+
+      div
+        width: 3px
+        height: 0
+        background-color: $black
+        position: absolute
+        top: 0
+        left: 50%
+        margin-left: -2px
+        transition: height .4s $ease
+        z-index: 10
+
+      &.opened
+        transform: rotate(45deg)
+        transition-delay: .4s
+        span
+          &:first-child
+            transform: scaleX(0)
+            transition: transform .2s $ease
+
+          &:nth-child(3)
+            width: 0
+            transition: width .2s $ease
+
+        div
+          height: 30px
+          transition: height .2s $ease
+          transition-delay: .3s
+
+
+// Capa
+#capa
+  min-width: 100vw
+  min-height: 100vh
+  display: flex
+  align-items: center
+
+  ol
+    flex: 0 1 28%
+    @extend %border-box
+    padding: 30px 30px 0 $margin
+    @extend %transition
+
+    li
+      min-height: 60px
+
+    img
+      width: 80%
+      max-width: 160px
+      mix-blend-mode: darken
+      margin-bottom: 50px
+
+    a
+      font:
+        family: $title
+        size: 1.2em
+      color: $black
+      display: inline-block
+      position: relative
+      @extend %transition
+
+      &::before
+        @extend %pseudoelm
+        width: 25px
+        height: 1px
+        background-color: $red
+        bottom: -10px
+        left: 0
+        @extend %transition
+
+      &:hover
+        color: lighten($black, 20%)
+        padding-left: 3px
+      &:hover::before
+        width: 100%
+
+    li:last-child a
+      width: 35px
+      height: 35px
+      background: url("../img/arrow.svg") no-repeat 0 0
+        size: 35px auto
+      margin-top: 30px
+      &::before
+        display: none
+
+
+  hgroup
+    flex: 0 1 72%
+    @extend %border-box
+    padding: 80px $margin 0 0
+
+    h2
+      font:
+        family: $title
+        size: 7vw//5.3em
+        weight: normal
+      line-height: 1.2
+      position: relative
+      z-index: 1
+
+      em
+        color: $red
+        display: inline-block
+        position: relative
+        z-index: -1
+        &::before
+          @extend %pseudoelm
+          width: 30vw
+          height: 30vw
+          border-radius: 100%
+          background: rgba(255, 191, 75, .3)
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+          z-index: -1
+        &::after
+          @extend %pseudoelm
+          width: 100%
+          height: 12px
+          background: $red
+          left: 0
+          bottom: -8px
+
+    h3
+      font-size: 2.5vw//2em
+      margin: 50px 0
+      position: relative
+      z-index: 1
+    a
+      color: $black
+      text-decoration: underline
+
+
+// Nós fazemos
+#nos-fazemos
+  width: 100vw
+  background-image: url("../img/pat.png")
+  position: relative
+  margin-top: 120px
+  @extend %border-box
+  padding: 80px 0 400px
+  z-index: 1
+
+  &::before
+    @extend %pseudoelm
+    width: 70%
+    height: 47vw
+    border-radius: 0 70px 0 0
+    background: $red
+    bottom: -47vw
+    left: 0
+    z-index: -1
+    mix-blend-mode: darken
+
+  &::after
+    @extend %pseudoelm
+    width: 40%
+    height: 44vw
+    background: url("../img/wire.jpg") no-repeat 30% 0
+      size: auto 100%
+    border-radius: 0 0 0 70px
+    bottom: -25vw
+    right: 0
+    z-index: -2
+
+  strong
+    font:
+      family: $title
+      size: 1.2em
+      weight: normal
+    transform-origin: top left
+    transform: rotate(-90deg)
+    position: absolute
+    top: 205px
+    left: $margin
+
+  p
+    font:
+      family: $title
+      size: 1.6em
+    line-height: 1.8
+    padding: 0 $margin 0 28%
+
+    mark
+      background: transparent
+      color: $red
+
+  figure
+    position: relative
+    display: flex
+    align-items: center
+    margin-top: 100px
+    &::before
+      @extend %pseudoelm
+      width: 400px
+      height: 400px
+      background: $red
+      top: -50%
+      left: -12%
+      border-radius: 100%
+      mix-blend-mode: color-burn
+    &::after
+      @extend %pseudoelm
+      width: 200px
+      height: 200px
+      border: solid 2px $red
+      top: 50%
+      left: 8%
+      border-radius: 100%
+
+    img
+      border-radius: 100%
+      width: 60vw
+      max-width: 300px
+      margin-left: $margin
+
+    figcaption
+      padding: 0 10%
+      font-size: 1.4em
+      line-height: 1.6
+      mark
+        background: #FFF1C1
+        padding: 0 6px 2px
+        border-radius: 3px
+
+
+#argumentos
+  transform: translateY(-17.5vw)
+  position: relative
+  z-index: 1
+
+  ul
+    @extend %border-box
+    padding-left: 10%
+    width: 55%
+    display: flex
+    flex-wrap: wrap
+
+    li
+      flex: 0 1 50%
+      @extend %border-box
+      padding: 3vw 0 5vw 10%//30px 0 100px 10%
+
+    h1
+      font-size: 1.8vw
+      position: relative
+      z-index: 1
+      padding-bottom: 2.6vw
+      color: $bg
+
+      &::before
+        @extend %pseudoelm
+        width: 4vw
+        height: 4vw
+        background: $black
+        top: -1.8vw
+        left: -2.5vw
+        border-radius: 100%
+        z-index: -1
+
+      &::after
+        @extend %pseudoelm
+        width: 30px
+        border-bottom: dashed 1px $black
+        bottom: 12px
+        left: 0
+
+    li:first-child,
+    li:nth-child(2)
+      h1, h2
+        color: $black
+      h1::before
+        background: $red
+
+    h2
+      font-size: 1.2vw
+      color: $bg
+
+
+//Cases
+#cases
+  position: relative
+  font-family: $title
+  padding-top: 3vw
+  margin-top: 6vw
+
+  h1
+    font:
+      size: 1.2em
+      weight: normal
+    transform-origin: top left
+    transform: rotate(-90deg)
+    position: absolute
+    top: 150px
+    left: $margin
+
+  .carousel
+    padding: 0 12% 0 28%
+
+    ul
+      display: flex
+      margin-top: 30px
+      padding: 0 5px
+
+      button
+        width: 12px
+        height: 12px
+        background: $black
+        border-radius: 100%
+        margin-right: 20px
+        overflow: hidden
+        text-indent: 200%
+        outline: none
+        opacity: .3
+        @extend %transition
+
+      .slick-active button
+        opacity: 1
+
+  h2
+    font:
+      size: 2.5vw
+      weight: normal
+    padding: 0 5px
+    span
+      display: inline-block
+      width: 33px
+      height: 23px
+      background: url("../img/go.svg") no-repeat 0 0
+      margin-left: 15px
+      @extend %transition
+  a
+    color: $black
+    @extend %transition
+    &:hover
+      color: lighten($black, 15%)
+      span
+        margin-left: 20px
+
+
+//Processo de trabalho
+#processo
+  margin-top: 200px
+  position: relative
+  font-family: $title
+  display: flex
+
+  &::before
+    @extend %pseudoelm
+    width: 72vw
+    height: 1100px
+    top: 26vw
+    left: 0
+    opacity: 20%
+    background: url("../img/working.jpg") no-repeat 90% 0
+      size: cover
+
+  &::after
+    @extend %pseudoelm
+    width: 15px
+    height: 1100px
+    top: 26vw
+    left: 0
+    z-index: 1
+    background-color: $red
+    mix-blend-mode: darken
+
+  h1
+    flex: 0 1 47%
+    @extend %border-box
+    padding: 0 18% 0 $margin
+    color: $red
+    line-height: 1.2
+    font:
+      size: 4vw
+      weight: normal
+
+  ol
+    flex: 0 1 53%
+    @extend %border-box
+    padding-right: $margin
+    position: relative
+    z-index: 1
+
+  li
+    padding-left: 18%
+
+  h2
+    position: relative
+    color: $red
+    padding-bottom: 2vw
+    font:
+      size: 2.4vw
+      weight: normal
+
+    &::before
+      position: absolute
+      width: 4.4vw
+      height: 4.4vw
+      line-height: 4.4vw
+      background-color: $red
+      border-radius: 100%
+      left: -8vw
+      top: -.5vw
+      color: $bg
+      text-align: center
+
+  $numbers: 1 2 3 4 5
+  @each $i in $numbers
+    li:nth-child(#{$i}) h2::before
+      content: '#{$i}'
+
+  p
+    font:
+      family: $font
+      size: 1.1em
+    line-height: 1.6
+    padding-bottom: 2.5vw
+
+
+
+//Form contato
+#contato
+  display: flex
+  padding: 0 $margin
+  position: relative
+  z-index: 1
+  margin-top: 140px
+
+  aside
+    flex: 0 1 40%
+    @extend %border-box
+    padding-right: 12%
+
+    strong
+      font:
+        size: 1.2em
+        family: $title
+        weight: normal
+      transform-origin: top left
+      transform: rotate(-90deg)
+      position: absolute
+      top: 100px
+      left: $margin
+
+    h2
+      padding: 260px 0 80px 0
+      font-size: 1.7vw
+      line-height: 1.5
+      position: relative
+
+      &::after
+        @extend %pseudoelm
+        width: 40px
+        border-bottom: dashed 1px $black
+        bottom: 40px
+        left: 0
+
+    p
+      line-height: 1.5
+      font-size: .9em
+
+  form
+    background-color: $black
+    width: 60%
+    flex: 0 1 60%
+    color: $bg
+    @extend %border-box
+    padding: 30px 5% 5%
+
+    //Carousel
+    .carousel-questions
+      width: 100%
+      background: #C8C8BB
+      border-radius: 6px
+      margin: 1.5em 0
+      padding: 1em 0
+
+      .slick-prev,
+      .slick-next
+        background: #e4e4dd
+        overflow: hidden
+        text-indent: 200%
+        width: 30px
+        height: 65px
+        outline: none
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+
+        &::before
+          @extend %pseudoelm
+          width: 12px
+          height: 12px
+          background: url("../img/next.svg") no-repeat center
+            size: contain
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+
+        &:hover
+          opacity: .7
+
+      .slick-prev
+        left: 0
+        border-radius: 0 6px 6px 0
+        &::before
+          transform: translate(-50%, -50%) rotate(180deg)
+      .slick-next
+        right: 0
+        border-radius: 6px 0 0 6px
+
+
+      & > div:first-of-type
+        margin: 0 40px
+
+      .slick-dots
+        display: flex
+        margin: 30px 40px 0
+
+        button
+          width: 8px
+          height: 8px
+          background: $black
+          border-radius: 100%
+          margin-right: 10px
+          overflow: hidden
+          text-indent: 200%
+          outline: none
+          opacity: .3
+          @extend %transition          
+
+        .slick-active button
+          opacity: 1
+
+      small
+        display: inline-block
+        background: $red
+        padding: 3px 10px
+        border-radius: 4px
+        color: $black
+
+      i
+        color: $bg
+        font-style: normal
+
+      p
+        color: $black
+        padding: .8em 0
+
+      input[type="radio"]
+        position: absolute
+        opacity: 0
+        cursor: pointer
+        height: 0
+        width: 0
+
+        &:checked + label
+          background: #8dd890
+          border-color: #cfffd1
+          color: #cfffd1
+
+      label
+        display: inline-block
+        position: relative
+        width: 80px
+        height: 25px
+        line-height: 25px
+        border: solid 2px $black
+          radius: 6px
+        text:
+          transform: uppercase
+          align: center
+        font-size: .8em
+        cursor: pointer
+        color: $black
+        @extend %transition
+
+
+    h2
+      font:
+        family: $title
+        weight: normal
+        size: 3.2vw
+
+    h3
+      margin-bottom: 30px
+    h4
+      margin-bottom: 20px
+
+    ol
+      display: flex
+      flex-wrap: wrap
+      justify-content: space-between
+
+      li
+        flex: 0 1 46%
+        margin-bottom: 30px
+
+      &:first-of-type li:first-child
+        flex: 0 1 100%
+
+      input
+        width: 100%
+        height: 40px
+        border: none
+          radius: 6px
+        @extend %border-box
+        padding: 0 15px
+        font-size: .8em
+
+    fieldset
+      margin-bottom: 30px
+
+      input
+        margin: 0 20px 10px 0
+        width: 30px
+        height: 30px
+        border: none
+        display: inline-block
+        vertical-align: middle
+        cursor: pointer
+
+      label
+        display: inline-block
+        vertical-align: middle
+        font-size: .9em
+        cursor: pointer
+        margin-bottom: 10px
+
+    textarea
+      width: 100%
+      height: 80px
+      border: none
+        radius: 6px
+      @extend %border-box
+      padding: 5px 15px
+      font-size: .8em
+      margin-bottom: 30px
+
+    input[type="submit"]
+      width: 150px
+      height: 40px
+      border: none
+        radius: 6px
+      @extend %border-box
+      padding: 0 40px 0 15px
+      background: url("../img/send.svg") no-repeat 80% center $red
+        size: 20px auto
+      color: white
+      text-align: left
+      cursor: pointer
+      box-shadow: 0 3px 0 darken($red, 20%)
+      @extend %transition
+
+      &:hover
+        background:
+          position: 85% 30%
+          color: lighten($red, 5%)
+
+    .thankyou_message
+      display: none
+      margin-top: 30px
+      color: darkslategrey
+      background: mediumspringgreen
+      padding: 10px
+      border-radius: 6px
+
+      strong
+        font-size: 1.4em
+
+#footer
+  padding: 80px $margin 0
+
+  figure
+    width: 160px
+    height: 40px
+    overflow: hidden
+    position: relative
+    display: inline-block
+
+    img
+      width: 100%
+      position: absolute
+      bottom: -20px
+      left: 0
+
+  small
+    font-size: .7em
+    display: block
+    margin-bottom: 30px
+
+  ul
+    float: right
+    display: flex
+  li
+    width: 35px
+    height: 35px
+    margin-left: 20px
+
+    &:first-child a
+      background: url("../img/linkedin.svg") no-repeat 0 0
+    &:last-child a
+      background: url("../img/up.svg") no-repeat 0 0
+
+    a
+      display: block
+      height: 100%
+
+
+
+// Media queries
+$bigscreens:    100em   // 1600px
+$tablet:        64em    // 1024px
+$smartphone:    30em    // 480px
+
+@mixin media-query($device)
+  @media screen and (max-width: $device)
+    @content
+
+
+//@import "media-bigscreens"
+@import "media-tablet"
+@import "media-smartphone"

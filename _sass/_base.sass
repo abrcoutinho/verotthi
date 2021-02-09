@@ -1,0 +1,143 @@
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Quicksand:wght@600&display=swap')
+$title:       'Abril Fatface', cursive
+$font:        'Quicksand', sans-serif
+
+// colors
+$red:         #FF4B4B
+$black:       #404040
+$bg:          #FCFCF5
+
+$ease:        cubic-bezier(.5,0,0,1)
+$margin:      7%
+
+// resets
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, nav, section, menu, time, mark, audio, video, canvas
+  margin:     0
+  padding:    0
+  border:     0
+  outline:    none
+
+html, body
+  min-height:               100%
+  -ms-text-size-adjust:     100%
+  -webkit-text-size-adjust: 100%
+
+body, input, textarea
+  font:                     1em $font
+  -webkit-font-smoothing:   antialiased
+
+a
+  text-decoration:          none
+ul, ol, dl
+  list-style:               none
+button
+  padding:                  0
+  border:                   0
+  background:               transparent
+  cursor:                   pointer
+img
+  display:                  block
+em
+  font-style:               normal
+
+
+// selection
+::selection
+  background:       $red
+  color:            white
+  text-shadow:      none
+::-moz-selection
+  background:       $red
+  color:            white
+  text-shadow:      none
+
+
+// placeholder
+$placeholder: $black
+::-webkit-input-placeholder
+  color: $placeholder
+::-moz-placeholder
+  color: $placeholder
+\:-moz-placeholder
+  color: $placeholder
+\:-ms-input-placeholder
+  color: $placeholder
+
+
+// scrollbars webkit
+::-webkit-scrollbar
+  width:                2px
+::-webkit-scrollbar-track
+  // -webkit-box-shadow:   inset 0 0 6px rgba(0,0,0,.1)
+  border-radius:        4px
+::-webkit-scrollbar-thumb
+  border-radius:        4px
+  background:           $red//transparent
+  // -webkit-box-shadow:   inset 0 0 6px rgba(0,0,0,.5)
+::-webkit-scrollbar-thumb:window-inactive
+  background:           $red//transparent
+
+
+%border-box
+  -webkit-box-sizing:   border-box
+  -moz-box-sizing:      border-box
+  box-sizing:           border-box
+@mixin border-box
+  -webkit-box-sizing:   border-box
+  -moz-box-sizing:      border-box
+  box-sizing:           border-box
+
+%transition
+  $transition:          all 0.5s $ease
+  -webkit-transition:   $transition
+  transition:           $transition
+@mixin transition
+  $transition:          all 0.5s $ease
+  -webkit-transition:   $transition
+  transition:           $transition
+
+%clear
+  &:after
+    height:             0
+    clear:              both
+    content:            "."
+    display:            block
+    font-size:          0
+    visibility:         hidden
+    position:           initial
+
+@mixin translate($val1, $val2)
+  -webkit-transform:    translate($val1, $val2)
+  -moz-transform:       translate($val1, $val2)
+  -ms-transform:        translate($val1, $val2)
+  -o-transform:         translate($val1, $val2)
+  transform:            translate($val1, $val2)
+
+%pseudoelm
+  content: ''
+  position: absolute
+
+
+// Animate on scroll
+.slide-in
+  opacity: 0
+
+.align-left
+  @include translate(-30%, 0)
+.align-right
+  @include translate(30%, 0)
+.align-up
+  @include translate(0, 50px)
+
+.active
+  opacity: 1
+  @include translate(0, 0)
+  transition: all .8s $ease .4s
+
+
+// Sticky elements
+.stick
+  position: fixed
+  top: 0
